@@ -1,0 +1,56 @@
+[color]
+    status = auto
+    branch = auto
+    interactive = auto
+    diff = auto
+    grep = auto
+    ui = auto
+
+[core]
+    excludesfile = /home/matthew/.gitignore
+    editor = vim
+
+[alias]
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate                        ; Log one per line
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat              ; Log one per line with files changed
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short    ; Log one per line with dates
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative  ; Log one per line with relative dates
+    glog = log --graph                               ; Graph log
+    filelog = log -u                                 ; Log for file
+    fl = log -u                                      ; Log for file
+    dl = "!git ll -1"                                ; Show modified files in last commit
+    dlc = diff --cached HEAD^                        ; Show diff of last commit
+    f = "!git ls-files | grep -i"                    ; Find a file in a codebase
+    la = "!git config -l | grep alias | cut -c 7-"   ; List aliases
+    st = status
+    ci = commit -a
+    up = checkout
+    co = checkout
+    sum = status
+    di = diff
+    bo = branch
+    br = branch
+    bookmarks = branch
+    branches = branch
+    o = log --graph @{u}..HEAD                       ; List outgoing commits
+    out = log --graph @{u}..HEAD
+    outgoing = log --graph @{u}..HEAD
+    in = log --graph HEAD..@{u}                      ; List incomming commits, fetch first to see commits.
+    incoming = log --graph HEAD..@{u}
+    vimdiff = difftool --tool=vimdiff --no-prompt
+    rpo = remote prune origin                        ; Prune local branches
+    pb = "!git branch --merged | grep -v "\\*" | xargs -n 1 git branch -d"  ; Delete local merged branches
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    uncommit = reset --soft 'HEAD^'
+    fx = commit --fixup
+    fixup = commit --fixup
+    ff = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+    fixupfile = "!f() { git commit --fixup=$(git log --all --full-history -1 --format=format:%h -- \"$1\") \"$@\";}; f"
+    
+[user]
+	email = matt@zentail.com
+	name = Matt
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
